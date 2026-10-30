@@ -1,1 +1,313 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael Rosillo | Portafolio</title>
+  <meta name="description" content="Portafolio de Michael Rosillo, estudiante de Ingeniería de Software en la Universidad Técnica de Ambato.">
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Plugins -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Fondo animado -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="glow glow-1" aria-hidden="true"></div>
+  <div class="glow glow-2" aria-hidden="true"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="nav" id="nav">
+    <a href="#inicio" class="nav-logo">&lt;MR /&gt;</a>
+    <nav>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#plugins">Plugins</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- ===== BANNER / HERO ===== -->
+    <section class="hero" id="inicio">
+      <div class="hero-text">
+        <p class="hero-tag mono">// Hola, mundo 👋</p>
+        <h1>Soy <span class="gradient-text">Michael Rosillo</span></h1>
+        <h2 class="hero-sub">
+          <span id="typed"></span><noscript>Estudiante de Ingeniería de Software</noscript>
+        </h2>
+        <p class="hero-desc">
+          Estudiante de la Carrera de Software en la Universidad Técnica de Ambato.
+          Me gusta construir aplicaciones limpias, funcionales y bien pensadas,
+          desde la base de datos hasta la interfaz.
+        </p>
+        <div class="hero-buttons">
+          <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+          <a href="#contacto" class="btn btn-ghost">Contáctame</a>
+        </div>
+      </div>
+
+      <!-- Avatar (sin fotografía) -->
+      <div class="hero-avatar" data-tilt>
+        <div class="avatar-ring"></div>
+        <div class="avatar-orbit"><span></span><span></span><span></span></div>
+        <svg class="avatar" viewBox="0 0 200 200" role="img" aria-label="Avatar de Michael">
+          <defs>
+            <linearGradient id="gBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1b1430"/>
+              <stop offset="1" stop-color="#0d0a17"/>
+            </linearGradient>
+            <linearGradient id="gSkin" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#c4b5fd"/>
+              <stop offset="1" stop-color="#8b5cf6"/>
+            </linearGradient>
+            <linearGradient id="gBody" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#7c3aed"/>
+              <stop offset="1" stop-color="#4c1d95"/>
+            </linearGradient>
+            <clipPath id="clipCircle"><circle cx="100" cy="100" r="96"/></clipPath>
+          </defs>
+          <circle cx="100" cy="100" r="96" fill="url(#gBg)"/>
+          <g clip-path="url(#clipCircle)">
+            <!-- cuerpo / hoodie -->
+            <path d="M30 210 Q32 150 100 142 Q168 150 170 210 Z" fill="url(#gBody)"/>
+            <path d="M84 146 L100 168 L116 146" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round"/>
+            <!-- cuello -->
+            <rect x="88" y="120" width="24" height="26" rx="10" fill="url(#gSkin)" opacity=".9"/>
+            <!-- cabeza -->
+            <ellipse cx="100" cy="92" rx="36" ry="40" fill="url(#gSkin)"/>
+            <!-- cabello -->
+            <path d="M63 88 Q60 50 100 48 Q142 48 138 86 Q130 66 112 68 Q96 58 82 70 Q70 74 63 88 Z" fill="#1e1236"/>
+            <!-- lentes -->
+            <g class="avatar-glasses" fill="none" stroke="#0d0a17" stroke-width="3">
+              <rect x="74" y="86" width="22" height="16" rx="6"/>
+              <rect x="104" y="86" width="22" height="16" rx="6"/>
+              <path d="M96 93 L104 93"/>
+            </g>
+            <!-- ojos -->
+            <g class="avatar-eyes" fill="#0d0a17">
+              <circle cx="85" cy="94" r="3"/>
+              <circle cx="115" cy="94" r="3"/>
+            </g>
+            <!-- sonrisa -->
+            <path d="M90 112 Q100 119 110 112" fill="none" stroke="#0d0a17" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+        </svg>
+        <div class="avatar-badge mono">&lt;/&gt; dev</div>
+      </div>
+
+      <a href="#sobre-mi" class="scroll-hint" aria-label="Bajar">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ===== SOBRE MÍ ===== -->
+    <section class="section" id="sobre-mi">
+      <h2 class="section-title" data-aos="fade-up"><span class="mono">01.</span> Sobre mí</h2>
+      <div class="about-grid">
+        <div class="card about-text" data-aos="fade-up">
+          <p>
+            Soy estudiante de <strong>Ingeniería de Software</strong> en la Facultad de Ingeniería en Sistemas,
+            Electrónica e Industrial (FISEI) de la <strong>Universidad Técnica de Ambato</strong>.
+          </p>
+          <p>
+            Disfruto resolver problemas con código: diseñar bases de datos, crear aplicaciones web y de escritorio,
+            y trabajar en equipo usando metodologías ágiles como Scrum.
+          </p>
+          <p>
+            Actualmente sigo aprendiendo sobre desarrollo web, redes y buenas prácticas de ingeniería de software.
+          </p>
+        </div>
+        <div class="about-stats" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat card"><span class="stat-num" data-count="10">0</span><span class="stat-label">Proyectos</span></div>
+          <div class="stat card"><span class="stat-num" data-count="8">0</span><span class="stat-label">Tecnologías</span></div>
+          <div class="stat card"><span class="stat-num" data-count="4">0</span><span class="stat-label">Semestre</span></div>
+          <div class="stat card"><span class="stat-num" data-count="100">0</span><span class="stat-label">% Ganas</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HABILIDADES ===== -->
+    <section class="section" id="habilidades">
+      <h2 class="section-title" data-aos="fade-up"><span class="mono">02.</span> Habilidades</h2>
+      <div class="skills" data-aos="fade-up">
+        <span class="chip">Java</span>
+        <span class="chip">PHP</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">HTML5</span>
+        <span class="chip">CSS3</span>
+        <span class="chip">Bootstrap</span>
+        <span class="chip">MySQL</span>
+        <span class="chip">Oracle PL/SQL</span>
+        <span class="chip">SQL Server</span>
+        <span class="chip">Git &amp; GitHub</span>
+        <span class="chip">Jira / Scrum</span>
+        <span class="chip">Cisco Packet Tracer</span>
+      </div>
+    </section>
+
+    <!-- ===== PROYECTOS ===== -->
+    <!-- EDITA: cambia títulos, descripciones, etiquetas y enlaces por tus proyectos reales -->
+    <section class="section" id="proyectos">
+      <h2 class="section-title" data-aos="fade-up"><span class="mono">03.</span> Proyectos</h2>
+      <div class="projects">
+
+        <article class="card project" data-aos="fade-up">
+          <div class="project-top">
+            <svg class="project-icon" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4zm0 5l9 4 9-4M3 17l9 4 9-4"/></svg>
+            <a href="https://github.com/michaelrosillo787-alt" target="_blank" rel="noopener" class="project-link" aria-label="Ver en GitHub">↗</a>
+          </div>
+          <h3>CRUD de Estudiantes</h3>
+          <p>Aplicación web con arquitectura MVC para registrar, editar y eliminar estudiantes, con tablas dinámicas.</p>
+          <ul class="tags mono"><li>PHP</li><li>MySQL</li><li>jQuery EasyUI</li></ul>
+        </article>
+
+        <article class="card project" data-aos="fade-up" data-aos-delay="80">
+          <div class="project-top">
+            <svg class="project-icon" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"/></svg>
+            <a href="https://github.com/michaelrosillo787-alt" target="_blank" rel="noopener" class="project-link" aria-label="Ver en GitHub">↗</a>
+          </div>
+          <h3>Sistema de Lectura QR</h3>
+          <p>Aplicación de escritorio que identifica equipos mediante códigos QR leídos con una cámara web.</p>
+          <ul class="tags mono"><li>Java</li><li>NetBeans</li><li>MySQL</li></ul>
+        </article>
+
+        <article class="card project" data-aos="fade-up" data-aos-delay="160">
+          <div class="project-top">
+            <svg class="project-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v20M2 12h20"/></svg>
+            <a href="https://github.com/michaelrosillo787-alt" target="_blank" rel="noopener" class="project-link" aria-label="Ver en GitHub">↗</a>
+          </div>
+          <h3>Topología de Red Empresarial</h3>
+          <p>Diseño en Packet Tracer con VLAN, VTP, STP, EtherChannel y red inalámbrica administrada por WLC.</p>
+          <ul class="tags mono"><li>Cisco</li><li>Redes</li><li>Packet Tracer</li></ul>
+        </article>
+
+        <article class="card project" data-aos="fade-up">
+          <div class="project-top">
+            <svg class="project-icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            <a href="https://github.com/michaelrosillo787-alt" target="_blank" rel="noopener" class="project-link" aria-label="Ver en GitHub">↗</a>
+          </div>
+          <h3>Sistema Bancario PL/SQL</h3>
+          <p>Procedimientos almacenados para depósitos, retiros y transferencias con validaciones y control de errores.</p>
+          <ul class="tags mono"><li>Oracle</li><li>PL/SQL</li></ul>
+        </article>
+
+        <article class="card project" data-aos="fade-up" data-aos-delay="80">
+          <div class="project-top">
+            <svg class="project-icon" viewBox="0 0 24 24"><path d="M9 11l3 3 8-8M20 12v7a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2h9"/></svg>
+            <a href="https://github.com/michaelrosillo787-alt" target="_blank" rel="noopener" class="project-link" aria-label="Ver en GitHub">↗</a>
+          </div>
+          <h3>Proyecto Ágil con Scrum</h3>
+          <p>Gestión de un proyecto en equipo con historias de usuario, sprints y tablero en Jira, versionado en GitHub.</p>
+          <ul class="tags mono"><li>Scrum</li><li>Jira</li><li>Git</li></ul>
+        </article>
+
+        <article class="card project" data-aos="fade-up" data-aos-delay="160">
+          <div class="project-top">
+            <svg class="project-icon" viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg>
+            <a href="https://github.com/michaelrosillo787-alt" target="_blank" rel="noopener" class="project-link" aria-label="Ver en GitHub">↗</a>
+          </div>
+          <h3>Este Portafolio</h3>
+          <p>Sitio personal publicado en GitHub Pages, diseñado con HTML, CSS y JavaScript puro más algunos plugins.</p>
+          <ul class="tags mono"><li>HTML</li><li>CSS</li><li>JS</li></ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== PLUGINS ===== -->
+    <section class="section" id="plugins">
+      <h2 class="section-title" data-aos="fade-up"><span class="mono">04.</span> Plugins utilizados</h2>
+      <p class="section-intro" data-aos="fade-up">Librerías externas integradas en esta página:</p>
+      <div class="plugins">
+        <div class="card plugin" data-aos="zoom-in">
+          <span class="plugin-name mono">AOS</span>
+          <p>Animate On Scroll: anima las secciones al aparecer mientras haces scroll.</p>
+        </div>
+        <div class="card plugin" data-aos="zoom-in" data-aos-delay="80">
+          <span class="plugin-name mono">Typed.js</span>
+          <p>Efecto de máquina de escribir en el texto del banner principal.</p>
+        </div>
+        <div class="card plugin" data-aos="zoom-in" data-aos-delay="160">
+          <span class="plugin-name mono">Leaflet</span>
+          <p>Mapa interactivo con OpenStreetMap para mostrar mi ubicación.</p>
+        </div>
+        <div class="card plugin" data-aos="zoom-in" data-aos-delay="240">
+          <span class="plugin-name mono">Google Fonts</span>
+          <p>Tipografías Sora, Inter y JetBrains Mono.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== UBICACIÓN ===== -->
+    <section class="section" id="ubicacion">
+      <h2 class="section-title" data-aos="fade-up"><span class="mono">05.</span> De dónde soy</h2>
+      <div class="location" data-aos="fade-up">
+        <div class="card location-info">
+          <h3>📍 Ambato, Ecuador</h3>
+          <p>Provincia de Tungurahua, en el centro de la Sierra ecuatoriana, conocida como la
+            <em>“Tierra de las Flores y las Frutas”</em>.</p>
+          <p class="mono muted">-1.2491, -78.6168</p>
+        </div>
+        <div class="card map-wrap">
+          <div id="map" aria-label="Mapa de Ambato"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACTO / REDES ===== -->
+    <!-- EDITA: reemplaza los enlaces por tus perfiles reales -->
+    <section class="section" id="contacto">
+      <h2 class="section-title" data-aos="fade-up"><span class="mono">06.</span> Redes y contacto</h2>
+      <p class="section-intro" data-aos="fade-up">¿Quieres colaborar o conversar? Encuéntrame aquí:</p>
+      <div class="socials" data-aos="fade-up">
+        <a class="social card" href="https://github.com/michaelrosillo787-alt" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .5z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a class="social card" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 110-4.2 2.1 2.1 0 010 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a class="social card" href="https://www.instagram.com/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg>
+          <span>Instagram</span>
+        </a>
+        <a class="social card" href="mailto:correo@ejemplo.com">
+          <svg viewBox="0 0 24 24"><path d="M2 5h20v14H2zM2 5l10 8 10-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <span>Correo</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="mono">Diseñado y desarrollado por <span class="gradient-text">Michael Rosillo</span> · <span id="year"></span></p>
+    <p class="muted">Universidad Técnica de Ambato · Carrera de Software</p>
+  </footer>
+
+  <button class="to-top" id="to-top" aria-label="Volver arriba">↑</button>
+
+  <!-- Plugins JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
